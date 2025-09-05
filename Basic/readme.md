@@ -1,0 +1,74 @@
+1. Reading words until the end of input
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string word;
+    while(cin >> word) {   // stops at space, tab, or newline
+        cout << "Read word: " << word << endl;
+    }
+}
+
+
+How it works:
+
+ `cin >> word` reads one word at a time.
+ The loop continues until the input ends (Ctrl+D on Linux/macOS, Ctrl+Z on Windows).
+ Spaces and newlines are treated as separators, not part of the word.
+
+
+2. Reading a specific number of words
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;           // number of words
+    string word;
+    for(int i = 0; i < n; i++) {
+        cin >> word;
+        cout << "Word " << i+1 << ": " << word << endl;
+    }
+}
+
+ This is useful if the number of inputs is known in advance.
+
+3. Reading multiple words in a single line
+
+Sometimes, you want all words in one line, but still process them individually.
+
+#include <iostream>
+#include <sstream>
+#include <string>
+using namespace std;
+
+int main() {
+    string line;
+    getline(cin, line);          // read full line
+    stringstream ss(line);       // treat line as stream
+    string word;
+    while(ss >> word) {
+        cout << "Word: " << word << endl;
+    }
+}
+
+stringstream lets you split a full line into words easily.
+ Handles spaces naturally and avoids the leftover newline problem.
+
+
+# TL;DR
+
+ `cin >> word` → one word at a time, spaces/newlines are separators.
+ `getline(cin, line)` → reads full line including spaces.
+ Use `stringstream` if you want to split a full line into words.
+
+
+$$
+ int -> -10^9 to +10^9
+ long -> -10^12 to +10^12
+ long long -> -10^18 to +10^18
+$$
