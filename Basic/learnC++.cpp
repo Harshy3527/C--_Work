@@ -12,7 +12,24 @@ string getAdultStatus(int age){
         return "Not an Adult"; 
 }
 
+// int[] is not a valid return type in C++
+
+// int[] printMarks(){
+//     int marks[] = {99,100,99,100,99}; 
+//     return marks; 
+// }
+
+vector<int> printMarks(){
+    return {99,100,99,100,99};
+}
+
+
 int main() {
+    vector<int> marks = printMarks(); //can't directly print an vec or an array, so 
+    cout << "Marks: ";
+    for(int m : marks)
+        cout << m << " ";
+    cout<<endl;
     cout << "Hey Everyone\n";
     cout << "Hey guy! " << endl; 
     cout << "Hello World ! Hahahaha\n"; 
