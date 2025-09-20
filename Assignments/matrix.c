@@ -1,25 +1,12 @@
 #include <stdio.h>
-
-void printMatrix(int matrix[][]);
-void inputMatrix(int i, int j, int matrix[i][j]);
-
-int main(){
-    int i, j; 
-    printf("Enter rows and columns :- \n"); 
-    scanf("%d %d", &i,&j); 
-    //getting matrix
-    int matrix[i][j];
-    inputMatrix(i, j, matrix);
-    printMatrix(matrix, i, j); 
-    return 0;
-}
+int matrix[i][j];
 void printMatrix(int matrix[][], int i, int j){
     //printing the matrix
     printf("The Matrix is as follows:-\n");
     for (int rows = 0; rows < i; rows++) {
         printf("[");
         for (int col = 0; col < j; col++) {
-            printf("%2d", matrix[rows][col]);
+            printf("%d", matrix[rows][col]);
             if (col < j - 1) printf(",");
         }
         printf("]\n");
@@ -33,7 +20,16 @@ void inputMatrix(int i, int j, int matrix[i][j]) {
         }
     }
 }
-
+int main(){
+    int i, j; 
+    printf("Enter rows and columns :- \n"); 
+    scanf("%d %d", &i,&j); 
+    //getting matrix
+    
+    inputMatrix(i, j, matrix);
+    printMatrix(matrix, i, j); 
+    return 0;
+}
 // A two-dimensional array is actually an array in which each element is a one-dimensional array.
 // The length of an array x is the number of elements in the array, which can be obtained using x.length.
 // x[0],x[1], . . . , and x[x.length-1] are arrays. 

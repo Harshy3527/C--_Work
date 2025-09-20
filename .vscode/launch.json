@@ -2,6 +2,13 @@
     "version": "0.2.0",
     "configurations": [
       {
+        "type": "java",
+        "name": "QuineMcCluskey",
+        "request": "launch",
+        "mainClass": "QuineMcCluskey",
+        "projectName": "C++_Work_8b676e59"
+      },
+      {
         "name": "Debug Active File",
         "type": "cppdbg",
         "request": "launch",
