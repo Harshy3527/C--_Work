@@ -21,8 +21,6 @@ public class QuineMcCluskey {
 
     public static void main(String[] args) {
         Scanner hv = new Scanner(System.in);
-
-        // Input
         System.out.print("How many Variables (2<=n<=6)? --> ");
         n = hv.nextInt();
 
@@ -42,11 +40,11 @@ public class QuineMcCluskey {
             }
         }
 
-        // Run QM algorithm
+        // QM algorithm
         ArrayList<Term> primes = generatePrimeImplicants();
         ArrayList<Term> essentials = findEssentialPrimeImplicants(primes);
 
-        // Output
+        // display answer
         System.out.println("\nSimplified SOP Expression:");
         for (int i = 0; i < essentials.size(); i++) {
             System.out.print(bitsToExpr(essentials.get(i).bits));
@@ -133,7 +131,7 @@ public class QuineMcCluskey {
         return essentials;
     }
 
-    // Utilities
+    // all helper functions
     static String toBinary(int num, int len) {
         String s = Integer.toBinaryString(num);
         while (s.length() < len) s = "0" + s;
