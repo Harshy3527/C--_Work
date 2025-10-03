@@ -3,6 +3,13 @@
     "configurations": [
       {
         "type": "java",
+        "name": "demo",
+        "request": "launch",
+        "mainClass": "demo",
+        "projectName": "C++_Work_8b676e59"
+      },
+      {
+        "type": "java",
         "name": "QuineMcCluskey",
         "request": "launch",
         "mainClass": "QuineMcCluskey",
