@@ -100,5 +100,7 @@
         "variant": "cpp",
         "readme": "cpp"
     },
-    "C_Cpp.clang_format_style": "{ BasedOnStyle: Microsoft, BreakBeforeBraces: Attach }"
+    "C_Cpp.clang_format_style": "{ BasedOnStyle: Microsoft, BreakBeforeBraces: Attach }",
+    "files.autoSave": "onWindowChange",
+    "debug.console.closeOnEnd": true
 }

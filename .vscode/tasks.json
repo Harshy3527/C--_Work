@@ -19,32 +19,20 @@
       },
       "problemMatcher": ["$gcc"],
       "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": true,
+        "echo": false,
+        "reveal": "never",
+        "focus": false,
         "panel": "shared"
       }
     },
+
     {
       "label": "Run Interactive",
-      "type": "shell",
-      "command": "${fileDirname}\\${fileBasenameNoExtension}.exe",
-      "dependsOn": "Build Active File",
-      "problemMatcher": [],
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": true,
-        "panel": "shared"
-      }
-    },
-    {
-      "label": "Run with File I/O",
       "type": "shell",
       "command": "cmd.exe",
       "args": [
         "/c",
-        "${fileDirname}\\${fileBasenameNoExtension}.exe < ${fileDirname}\\input.txt > ${fileDirname}\\output.txt"
+        "${fileDirname}\\${fileBasenameNoExtension}.exe"
       ],
       "dependsOn": "Build Active File",
       "problemMatcher": [],
@@ -53,6 +41,27 @@
         "reveal": "always",
         "focus": true,
         "panel": "shared"
+      }
+    },
+
+    {
+      "label": "Run with File I/O",
+      "type": "shell",
+      "command": "cmd.exe",
+      "args": [
+        "/c",
+        // ✅ this line ensures files are created if missing
+        "(if not exist \"${fileDirname}\\inputf.in\" echo.>\"${fileDirname}\\inputf.in\") && (if not exist \"${fileDirname}\\outputf.out\" echo.>\"${fileDirname}\\outputf.out\") && \"${fileDirname}\\${fileBasenameNoExtension}.exe\" < \"${fileDirname}\\inputf.in\" > \"${fileDirname}\\outputf.out\""
+      ],
+      "dependsOn": "Build Active File",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "clear": true,
+        "showReuseMessage": false
       }
     }
   ]
