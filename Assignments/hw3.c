@@ -1,192 +1,260 @@
 #include <stdio.h>
+#include <math.h>
+
+// 3.1
 void prog31() {
-    int i, low, high;
-    printf("Enter the lower limit and upper limit :-\n");
+    int low, high;
+    printf("Enter the lower and upper limits: ");
     scanf("%d %d", &low, &high);
-    for (i = low; i <= high; i++)
-        printf("%d\n", i);
+    for (int i = low; i <= high; i++)
+        printf("%d ", i);
+    printf("\n");
 }
+
+// 3.2
 void prog32() {
-    int i, low, high;
-    printf("Enter the lower limit and upper limit:- \n");
+    int low, high;
+    printf("Enter the lower and upper limits: ");
     scanf("%d %d", &low, &high);
-    i = (low % 2 == 0) ? low : (low++);
-    for (i = low; i <= high; i += 2) {
-        if (i % 2 == 0)
-            printf("%d\n", i);
-    }
+    low = (low % 2 != 0)? low+1: low;
+    for (int i = low; i <= high; i += 2)
+        printf("%d ", i);
+    printf("\n");
 }
+
+// 3.3
 void prog33() {
-    int i, high, low, sum = 0;
-    printf("Enter the lower limit and upper limit:- \n");
+    int low, high, sum = 0;
+    printf("Enter the lower and upper limits: ");
     scanf("%d %d", &low, &high);
-    for (i = low; i <= high; i++) {
+    for (int i = low; i <= high; i++)
         sum += i;
-    }
-    printf("Sum = %d", sum);
+    printf("Sum = %d\n", sum);
 }
+
+// 3.4
 void prog34() {
-    int i, high, low, sumSq = 0;
-    printf("Enter the lower limit and upper limit :- \n");
+    int low, high;
+    printf("Enter the lower and upper limits: ");
     scanf("%d %d", &low, &high);
-    i = (low % 2 == 0) ? i : (i++);
-    for (i = low; i <= high; i += 2) {
-        sumSq += i * i;
-    }
-    printf("Sum of squares of even numbers from %d to %d = %d", low, high, sumSq);
+    if (low % 2 != 0) low++;
+    printf("Even number squares:\n");
+    for (int i = low; i <= high; i += 2)
+        printf("%d^2 = %d\n", i, i * i);
 }
+
+// 3.5
 void prog35() {
-    int i, num, fact = 1;
-    printf("Enter a number : ");
+    int num, fact = 1;
+    printf("Enter a number: ");
     scanf("%d", &num);
-    for (i = 1; i <= num; i++) {
+    for (int i = 1; i <= num; i++)
         fact *= i;
-    }
-    printf("%d! = %d", num, fact);
+    printf("%d! = %d\n", num, fact);
 }
+
+// 3.6
 void prog36() {
-    int digits, count = 0, num;
-    printf("Enter a number : ");
+    int num, count = 0, copy;
+    printf("Enter a number: ");
     scanf("%d", &num);
-    while (num > 0) {
+    copy = num;
+    if (num == 0) count = 1;
+    while (num != 0) {
         num /= 10;
         count++;
     }
-    printf("The number of digits in %d = %d", num, count);
+    printf("Number of digits in %d = %d\n", copy, log10(abs(copy))+1);
 }
+
+// 3.7
 void prog37() {
-    int digits, num, copy, revNum = 0;
-    printf("Enter a number : ");
+    int num, copy, rev = 0;
+    printf("Enter a number: ");
     scanf("%d", &num);
     copy = num;
-    while (num > 0) {
-        digits = num % 10;
+    while (num>10) {
+        rev = rev * 10 + (num % 10);
         num /= 10;
-        revNum = revNum * 10 + digits;
     }
-    printf("Reverse of %d = %d", copy, revNum);
+    printf("Reverse of %d = %d\n", copy, rev);
 }
+
+// 3.8
 void prog38() {
-    int digits, num, copy, revNum = 0;
-    printf("Enter a number : ");
+    int num, copy, rev = 0;
+    printf("Enter a number: ");
     scanf("%d", &num);
     copy = num;
     while (num > 0) {
-        digits = num % 10;
+        rev = rev * 10 + (num % 10);
         num /= 10;
-        revNum = revNum * 10 + digits;
     }
-    if (revNum == copy)
-        printf("Yes, it is a palindrome");
+    if (rev == copy)
+        printf("%d is a Palindrome number.\n", copy);
     else
-        printf("Not a palindrome");
+        printf("%d is not a Palindrome number.\n", copy);
 }
+
+// 3.9
 void prog39() {
-    int i, num;
-    printf("Enter a number : ");
+    int num;
+    printf("Enter a number: ");
     scanf("%d", &num);
-    for (i = 1; i <= 20; i++) {
-        printf("%d * %d = %d", num, i, (num * i));
-    }
+    for (int i = 1; i <= 20; i++)
+        printf("%d × %d = %d\n", num, i, num * i);
 }
+
+// 3.10
 void prog310() {
-    int digits, num, copy, sumSq = 0;
-    printf("Enter a number : ");
+    int num, copy, rem, sum = 0;
+    printf("Enter a number: ");
     scanf("%d", &num);
     copy = num;
     while (num > 0) {
-        digits = num % 10;
+        rem = num % 10;
+        sum += rem * rem * rem; // 3-digit Armstrong
         num /= 10;
-        sumSq = sumSq + digits * digits;
     }
-    printf((sumSq == copy) ? "Armstrong Number" : "Not an Armstrong Number");
-}
-void prog311() {
-    int i, num, count = 0;
-    printf("Enter a number : ");
-    scanf("%d", &num);
-    for (i = 2; i * i <= num; i++) {
-        if (num % i == 0)
-            count++;
-    }
-    if (count > 0)
-        printf("It is a prime number.");
+    if (sum == copy)
+        printf("%d is an Armstrong number.\n", copy);
     else
-        printf("Not a prime number");
+        printf("%d is not an Armstrong number.\n", copy);
 }
-void prog312() { //fibonacci series v1.0
-    int i, n, j, s = 0;
-    printf("Enter the number of terms : ");
-    scanf("%d", &n);
-    int f = 0, l = 1;
-    printf("0 ");
-    for (i = 0; i <= n; i++) {
-        s = f + l;
-        printf(" %d ", s);
-        f =l; l = s;
-    }
-}
-void prog313() {
-    printf("Enter a Decimal Number : ");
-    int decNum;
-    scanf("%d", &decNum);
-    if (decNum == 0) {
-        printf("0 in binary = 0\n");
-    }
-    int binArr[32]; // Enough for 32-bit int
-    int i = 0, copy = decNum;
-    while (copy > 0) {
-        binArr[i++] = copy % 2;
-        copy /= 2;
-    }
-    printf("%d in binary = ", decNum);
-    for (int j = i - 1; j >= 0; j--) {
-        printf("%d", binArr[j]);
-    }
-    printf("\n");
-}
-void prog314() {
-    printf("Enter a Decimal Number : ");
-    int decNum;
-    scanf("%d", &decNum);
-    if (decNum == 0) {
-        printf("0 in hexadecimal = 0\n");
-    }
-    int hexArr[32];// Enough for 32-bit int
-    int i = 0,j=0, copy = decNum;
-    while (copy > 0) {
-        hexArr[i] = copy % 16;
-        copy /= 16;
-        i++;
-    }
-    printf("%d in  Hexadecimal = 0x", decNum);
-    int k =0; char letter;; 
-    for (int j = i - 1; j >= 0; j--) {      
-        if (hexArr[j]>=10) {
-            letter =(char) ((hexArr[j]-10)+65);
-            printf("%c", letter); 
+
+// 3.11
+void prog311() {
+    int num, i, isPrime = 1;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    if (num <= 1) isPrime = 0;
+    for (i = 2; i * i <= num; i++) {
+        if (num % i == 0) {
+            isPrime = 0;
+            break;
         }
-        else
-            printf("%d", hexArr[j]);
+    }
+    if (isPrime)
+        printf("%d is a Prime number.\n", num);
+    else
+        printf("%d is not a Prime number.\n", num);
+}
+
+// 3.12
+void prog312() {
+    int n, a = 0, b = 1, next;
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+    printf("Fibonacci Series: %d %d ", a, b);
+    for (int i = 3; i <= n; i++) {
+        next = a + b;
+        printf("%d ", next);
+        a = b;
+        b = next;
     }
     printf("\n");
 }
 
+// 3.13
+void prog313() {
+    int dec, bin[32], i = 0;
+    printf("Enter a decimal number: ");
+    scanf("%d", &dec);
+    int copy = dec;
+    if (dec == 0) {
+        printf("0 in binary = 0\n");
+        return;
+    }
+    while (copy > 0) {
+        bin[i++] = copy % 2;
+        copy /= 2;
+    }
+    printf("%d in binary = ", dec);
+    for (int j = i - 1; j >= 0; j--)
+        printf("%d", bin[j]);
+    printf("\n");
+}
+
+// 3.14
+void prog314() {
+    int dec, hex[32], i = 0;
+    printf("Enter a decimal number: ");
+    scanf("%d", &dec);
+    int copy = dec;
+    if (dec == 0) {
+        printf("0 in hexadecimal = 0\n");
+        return;
+    }
+    while (copy > 0) {
+        hex[i++] = copy % 16;
+        copy /= 16;
+    }
+    printf("%d in hexadecimal = 0x", dec);
+    for (int j = i - 1; j >= 0; j--) {
+        if (hex[j] >= 10)
+            printf("%c", 'A' + (hex[j] - 10));
+        else
+            printf("%d", hex[j]);
+    }
+    printf("\n");
+}
+
+// 3.15
 void prog315() {
-    int i, j, low, high, sum = 0;
-    printf("Enter the lower limit and upper limit :- \n");
+    int low, high, sum = 0;
+    printf("Enter the lower and upper limits: ");
     scanf("%d %d", &low, &high);
-    for (i = low; i <= high; i++) {
+    for (int i = low; i <= high; i++) {
         if (i % 17 != 0)
             sum += i;
     }
-    printf("The sum = %d", sum);
+    printf("Sum of numbers not divisible by 17 between %d and %d = %d\n", low, high, sum);
 }
 
 int main() {
-    // prog31();
-    // prog32();
-    // prog34();
-    prog314();
-    // prog312(); 
+    int choice;
+    do {
+        printf("\n====== ASSIGNMENT – III MENU ======\n");
+        printf("1.  Print all natural numbers upto a range\n");
+        printf("2.  Print all even numbers upto a range\n");
+        printf("3.  Calculate sum of all natural numbers upto a range\n");
+        printf("4.  Print squares of even numbers upto a range\n");
+        printf("5.  Find factorial of a number\n");
+        printf("6.  Count digits of a number\n");
+        printf("7.  Reverse a number\n");
+        printf("8.  Check palindrome number\n");
+        printf("9.  Print multiplication table upto 20\n");
+        printf("10. Check Armstrong number\n");
+        printf("11. Check Prime number\n");
+        printf("12. Print Fibonacci series\n");
+        printf("13. Convert decimal to binary\n");
+        printf("14. Convert decimal to hexadecimal\n");
+        printf("15. Sum of numbers not divisible by 17 between two integers\n");
+        printf("0.  Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        printf("\n");
+
+        switch (choice) {
+            case 1: prog31(); break;
+            case 2: prog32(); break;
+            case 3: prog33(); break;
+            case 4: prog34(); break;
+            case 5: prog35(); break;
+            case 6: prog36(); break;
+            case 7: prog37(); break;
+            case 8: prog38(); break;
+            case 9: prog39(); break;
+            case 10: prog310(); break;
+            case 11: prog311(); break;
+            case 12: prog312(); break;
+            case 13: prog313(); break;
+            case 14: prog314(); break;
+            case 15: prog315(); break;
+            case 0: printf("Exiting... Goodbye!\n"); break;
+            default: printf("Invalid choice! Try again.\n");
+        }
+    } while (choice != 0);
+
+    return 0;
 }

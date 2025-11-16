@@ -86,13 +86,10 @@ vector<Term> generatePrimeImplicants()
 {
     vector<Term> terms;
     for (int m : minterms)
-    {
         terms.push_back(Term(toBinary(m, n), {m})); // convert every minterm to binary string and put it in Term object and mark it in covered = {m}
-    }
+
     for (int d : dontCares)
-    {
         terms.push_back(Term(toBinary(d, n), {d})); // same thing, just mark it as {d} now
-    }
 
     vector<Term> primes; // final prime implicants are stored here
     bool combined;       // did any merging happen in this iteration?
