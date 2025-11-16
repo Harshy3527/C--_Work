@@ -7,10 +7,13 @@ int main(){
     while(t--){
         int n; 
         cin>>n; 
+
         vector<ll> a(n+1); 
         for(int i =1; i <= n; i++)
             cin >> a[i];
+
         vector<ll> p1(n+1), p2(n+1);
+        
         ll pref =0; 
         for(ll i= 1; i <= n; i++){
             p1[i] = pref - i * i + i;
@@ -24,7 +27,7 @@ int main(){
             ans = max(ans, p2[i]+mx);
         }
 
-        ans += accumulate(all(a), 0ll);
+        ans += accumulate(a.begin(),a.end(), 0ll);
         cout<< ans << "\n";
     }
 }
