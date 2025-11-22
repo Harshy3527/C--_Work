@@ -1,7 +1,7 @@
 #include <bits\stdc++.h>
 using namespace std;
 
-void bubbleSort(int arr[], int n) {
+void sortNPrint(int arr[], int n) {
   for (int i = n-1; i >= 0; i--) { 
     int didSwap =0; 
     for (int j = 0; j <= i - 1; j++) {
@@ -25,5 +25,5 @@ int main() {
   int arr[n];
   cout << "Enter the numbers\n";
   while (i != n) cin >> arr[i++];
-  bubbleSort(arr, n);
+  sortNPrint(arr, n);
 }
